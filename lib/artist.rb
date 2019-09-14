@@ -19,11 +19,7 @@ class Artist
 
   def songs
     songs = []
-    Song.all.each do |song|
-      if song.artist.name == self.name
-        songs << song
-      end
-    end
+    Song.all.collect {|song| songs << song if song.artist == self}
     songs
   end
 
@@ -38,7 +34,7 @@ class Artist
 
   def print_songs
     Song.all.each do |song|
-      if song.artist_name == self.name
+      if song.artist == self
         puts "#{song.name}"
       end
     end
