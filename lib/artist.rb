@@ -20,6 +20,7 @@ class Artist
   def songs
     songs = []
     Song.all.collect {|song| songs << song if song.artist == self}
+    songs
   end
 
   def self.find_or_create_by_name(name)
